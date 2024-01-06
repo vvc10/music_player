@@ -7,22 +7,25 @@ import HomeL from './HomeL'
 import HomeR from './HomeR'
 import '../components/style.I.css'
 import { MusicProvider } from './MusicContext'
+import HotList from './HotList'
 
 const Home = () => {
-  
+
   return (
-    <div className='homewlr'>
- 
-       <div className='homewl'>
-        <HomeL />
+    <>
+      <Banner />
+      <div className='homefl_c'>
+        <AlbumsList />
+        <HotList/>
+        <div className='homewlr'>
+          <HomeL />
+          <HomeR />
+        </div>
       </div>
 
-      <div className='homewr'>
-        <HomeR />
-      </div>
-  
-     
-    </div>
+
+    </>
+
   )
 }
 

@@ -13,7 +13,7 @@ const MusicPlayer = () => {
   useEffect(() => {
     // Update the audio element when the selected music changes
     if (audioRef) {
-      audioRef.src = selectedMusic ? selectedMusic.url : null;
+      audioRef.src = selectedMusic ? selectedMusic.song_url : null;
       audioRef.load(); // Load the new source
       audioRef.play();
       setIsPlaying(true);
@@ -74,58 +74,68 @@ const MusicPlayer = () => {
 
 
   return (
-    <div className='fxd_musicplayer'>
-      <div className='fscmp_bg' style={mpcardbgset}></div>
-      <div className='mp-img'>
-        <img src={selectedMusic ? selectedMusic.cover : "null"} />
-        <div className='mp-songdetails'>
-          <div className='mp-songd-ar'>
-            <span>{selectedMusic ? selectedMusic.artist : "Artist"}</span>
-            <p>{selectedMusic ? selectedMusic.genre : "Artist"}</p>
-          </div>
-        </div>
-        {/* <div className='mp-songdown-heart'>
+    <>{
+      selectedMusic ? (
+        <div className='fxd_musicplayer'>
+          <div className='fscmp_bg' style={mpcardbgset}></div>
+          <div className='mp-img'>
+            <img src={selectedMusic ? selectedMusic.cover : "null"} />
+            <div className='mp-songdetails'>
+              <div className='mp-songd-ar'>
+                <span>{selectedMusic ? selectedMusic.title : "Title"}</span>
+                <p>{selectedMusic ? selectedMusic.artist : "Artist"}</p>
+              </div>
+            </div>
+            {/* <div className='mp-songdown-heart'>
         <i class="fa">&#xf019;</i>
         <i class='far'>&#xf004;</i>
         </div> */}
-      </div>
-      <div className='mp-ranger-div'>
+          </div>
+          <div className='mp-ranger-div'>
 
-        <input
-          type='range'
-          value={currentTime}
-          max={duration} bv
-          onChange={handleSeekBarChange}
-        />
-        <div className='mp-time-display'>
-          <div className='mp-time-display-l'>{formatTime(currentTime)}</div>
-          <div className='mp-time-display-r'>    {formatTime(duration - currentTime)}</div>
+            <input
+              type='range'
+              value={currentTime}
+              max={duration} bv
+              onChange={handleSeekBarChange}
+            />
+            <div className='mp-time-display'>
+              <div className='mp-time-display-l'>{formatTime(currentTime)}</div>
+              <div className='mp-time-display-r'>    {formatTime(duration - currentTime)}</div>
 
+            </div>
+          </div>
+          <div className='mp-controls'>
+            <div className='mpc mp-shuffle'></div>
+            <div className='mpc mp-prev'><i class="fa" onClick={handlePrev}>&#xf04a;</i></div>
+            <div className='mpc mp-play-pause' onClick={handlePlayPause}>
+              {
+                isPlaying ? <i class="fa fa-pause"></i> : <i class="fa fa-play"></i>
+              }
+
+
+            </div>
+            <div className='mpc mp-next'>
+
+              <i class="fa fa-forward" onClick={handleNext}></i>
+            </div>
+            <div className='mpc mp-queue'></div>
+
+          </div>
+          <audio
+            ref={(audio) => setAudioRef(audio)}
+            onTimeUpdate={handleTimeUpdate}
+            onLoadedMetadata={handleLoadedMetadata}
+          />
         </div>
-      </div>
-      <div className='mp-controls'>
-        <div className='mpc mp-shuffle'></div>
-        <div className='mpc mp-prev'><i class="fa" onClick={handlePrev}>&#xf04a;</i></div>
-        <div className='mpc mp-play-pause' onClick={handlePlayPause}>
-          {
-            isPlaying ? <i class="fa fa-pause"></i> : <i class="fa fa-play"></i>
-          }
+      )
+        : (
+          <></>
+        )
+    }
 
+    </>
 
-        </div>
-        <div className='mpc mp-next'>
-
-          <i class="fa fa-forward" onClick={handleNext}></i>
-        </div>
-        <div className='mpc mp-queue'></div>
-
-      </div>
-      <audio
-        ref={(audio) => setAudioRef(audio)}
-        onTimeUpdate={handleTimeUpdate}
-        onLoadedMetadata={handleLoadedMetadata}
-      />
-    </div>
   )
 }
 

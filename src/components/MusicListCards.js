@@ -3,6 +3,7 @@ import { useMusicContext } from './MusicContext';
 import '../components/style.I.css'
 import MusicPlayer from './MusicPlayer'
 import ArtistsCards from './ArtistsCards'
+import MusicPlayingGif from './MusicPlayingGif';
 const MusicListCards = (music) => {
   const { selectedMusic } = useMusicContext();
   const { handlePlay } = useMusicContext();
@@ -23,10 +24,11 @@ const MusicListCards = (music) => {
         <div className='spacer'> </div>
         <div className='duration'>{music.duration}</div>
         <div className='playbtn' onClick={handleClickPlay}>
-          {selectedMusic && selectedMusic.id === music.id ?
-            <div className='now-playing-icon'>
-              <p>...</p>
-            </div>
+          {
+            selectedMusic && selectedMusic.id === music.id ?
+             
+             <MusicPlayingGif/>
+          
             :
             <i class="fa">&#xf144;</i>
           }

@@ -9,8 +9,8 @@ const HomeL = () => {
     return (
         <div className='homel'>
       
-                <Banner />
-                <AlbumsList />
+                {/* <Banner /> */}
+             
                 <PopularTracks />
           
 

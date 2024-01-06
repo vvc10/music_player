@@ -16,7 +16,7 @@ function Banner() {
   return (
     <div className='carosusel_banner'>
       <Carousel activeIndex={index} className='cb_incr' onSelect={handleSelect}>
-        <Carousel.Item className=''>
+        <Carousel.Item>
           <img src={img1} className='banner_imgs' />
           <Carousel.Caption>
             {/* <h3>First slide label</h3>
@@ -42,6 +42,7 @@ function Banner() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      <div className='cb_faded_bottom'></div>
     </div>
 
   );

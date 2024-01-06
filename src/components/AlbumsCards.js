@@ -3,19 +3,19 @@ import '../components/style.I.css';
 import { Link } from 'react-router-dom';
 
 const AlbumsCards = ({ music }) => {
-    console.log('music here', music);
+    console.log('music ID...', music);
 
-    return (
+    return ( 
         <>
-                     
-               <div className='albumscardsdiv'>
-                <Link to={`/albumspage/${music.id}`}>   
+
+            <div className='albumscardsdiv'>
+                <Link to={`/albumpage/${music.id}`}>
                     <img src={music.cover} alt={`${music.artist} - ${music.title}`} />
-                    <span>{music.artist}</span>
-                    <p>{music.stream}</p>
-                    </Link>
-                </div>
-            
+                    <span>{music.title}</span>
+                    <p>{music.artist}</p>
+                </Link>
+            </div>
+
         </>
     );
 }

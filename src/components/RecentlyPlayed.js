@@ -1,6 +1,6 @@
 import React from 'react'
-
 const RecentlyPlayed = (music) => {
+  
     return (
         <div className='recenlyplayed-div'>
             <ul>

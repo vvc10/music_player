@@ -7,29 +7,36 @@ import Discover from './Discover';
 import SearchBar from './SearchBar';
 import MainTopBar from './MainTopBar';
 import AlbumPage from './AlbumPage';
-import { MusicProvider } from './MusicContext';
+import { MusicProvider, useMusicContext } from './MusicContext';
 import MusicPlayer from './MusicPlayer';
- const Main = () => {
- 
-  return (
+import Banner from './Banner';
+const Main = () => {
 
-    <div className='fl_main'>
-    <MusicProvider>
-        <MainTopBar/>
-       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/discover" element={<Discover />} />
-        <Route path="/foryou" element={<ForYour />} />
-        <Route path="/albumspage/:musicId"  element={<AlbumPage />} />
-      </Routes>
-      <div className='mp-zone-fxd'>  
-      <MusicPlayer/>
+
+
+
+  return (
+    <>
+
+      <div className='fl_main'>
+
+        <MusicProvider>
+          <MainTopBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/discover" element={<Discover />} />
+            <Route path="/foryou" element={<ForYour />} />
+            <Route path="/albumpage/:musicId" element={<AlbumPage />} />
+          </Routes>
+          <div className='mp-zone-fxd'>
+            <MusicPlayer />
+          </div>
+        </MusicProvider>
+
+
       </div>
-      
-    </MusicProvider>
- 
- 
-    </div>
+    </>
+
   )
 }
 
