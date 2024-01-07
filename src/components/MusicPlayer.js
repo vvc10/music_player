@@ -119,7 +119,7 @@ const MusicPlayer = () => {
 
               <i class="fa fa-forward" onClick={handleNext}></i>
             </div>
-            <div className='mpc mp-queue'></div>
+            <div className='mpc mp-queue'><i class="material-icons">queue_music</i></div>
 
           </div>
           <audio
