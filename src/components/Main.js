@@ -10,6 +10,7 @@ import AlbumPage from './AlbumPage';
 import { MusicProvider, useMusicContext } from './MusicContext';
 import MusicPlayer from './MusicPlayer';
 import Banner from './Banner';
+import BottomBar from './BottomBar';
 const Main = () => {
 
 
@@ -28,6 +29,7 @@ const Main = () => {
             <Route path="/foryou" element={<ForYour />} />
             <Route path="/albumpage/:musicId" element={<AlbumPage />} />
           </Routes>
+          <BottomBar/>
           <div className='mp-zone-fxd'>
             <MusicPlayer />
           </div>
