@@ -1807,10 +1807,10 @@ body {
     background-color: hsl(230, 46%, 20%, .6);
  
 
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
     color: #dbe1ff;
-    width: fit-content;
+ 
     border: 1px solid #1b2349;
     border-radius: 20px;
 }
