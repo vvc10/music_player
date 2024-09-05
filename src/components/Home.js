@@ -8,6 +8,7 @@ import HomeR from './HomeR'
 import '../components/style.I.css'
 import { MusicProvider } from './MusicContext'
 import HotList from './HotList'
+import SpotifyFetch from './SpotifyFetch'
 
 const Home = () => {
 
@@ -15,6 +16,7 @@ const Home = () => {
     <>
       <Banner />
       <div className='homefl_c'>
+      {/* <SpotifyFetch/> */}
         <AlbumsList />
         <HotList/>
         <div className='homewlr'>

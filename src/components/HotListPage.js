@@ -1,14 +1,17 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { firestore } from './firebaseConfig';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import React, { useState } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { weeklyAlbums } from '../db/MusicDb';
 import AlbumPageAlbums from './AlbumPageAlbums';
+import FeaturedArtists from './FeaturedArtists';
+import { firestore } from './firebaseConfig'
+import { collection, getDocs } from 'firebase/firestore'
 
-const AlbumsPage = () => {
+const HotListPage = () => {
+
     const [albumList, setAlbumList] = useState([]);
     const { id } = useParams();
-    const [likeCount, setLikeCount] = useState(() => parseInt(localStorage.getItem(`likeCount_${id}`)) || 0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -44,19 +47,16 @@ const AlbumsPage = () => {
         fetchData();
     }, [id]);
 
+
+    const [likeCount, setLikeCount] = useState(() => {
+        return parseInt(localStorage.getItem(`likeCount_${id}`)) || 0;
+    });
+
     useEffect(() => {
         localStorage.setItem(`likeCount_${id}`, likeCount.toString());
     }, [likeCount, id]);
 
-    const handleLike = async (song) => {
-        try {
-            const favoritesCollection = collection(firestore, 'favorites');
-            await addDoc(favoritesCollection, song);
-            setLikeCount((prevCount) => prevCount + 1);
-        } catch (error) {
-            console.error('Error adding song to favorites:', error);
-        }
-    };
+
 
     return (
         <div className='albumpage-div'>
@@ -78,27 +78,39 @@ const AlbumsPage = () => {
                     </div>
                     <div className='apdh_fl_r'>
                         <button className='play_all_btn'>
-                            <i className="fa fa-play"></i> Play
-                        </button>
-                        <button className='like_btn' onClick={() => handleLike(albumList)}>
-                            <i className="fa fa-heart"></i>
-                        </button>
+                            <i class="fa fa-play"></i> Play</button>
+                        <button className='like_btn' onClick={() => setLikeCount(prevCount => prevCount + 1)}>
+                            <i class="fa fa-heart"></i></button>
                     </div>
                 </div>
                 <div className='ap-div-body'>
-                    <AlbumPageAlbums />
+                    <div className='ap-div-body'>
+                    {albumList && albumList.tracks && albumList.tracks.items && (
+              albumList.tracks.items.map((track, index) => (
+                <AlbumPageAlbums key={index} album={track} />
+              ))
+            )}
+                    </div>
                 </div>
+
             </div>
             <div className='ap-div-r'>
                 <div className='apdr-about'>
                     <label>About</label>
+                    {/* <p> {albumList.description}</p>
+            <span>{albumList.featuredArtists}</span> */}
                 </div>
                 <div className='apdr-featured'>
                     <label>Featured Artists</label>
+                    {/* {albumList.album_total_songs && typeof albumList.album_total_songs === 'object' && albumList.album_total_songs.constructor === Map && Array.from(albumList.album_total_songs.values()).map((song, index) => (
+                <AlbumPageAlbums key={index} music={song} />
+            ))} */}
                 </div>
             </div>
         </div>
+
     );
 }
 
-export default AlbumsPage;
+export default HotListPage;
+ 

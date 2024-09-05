@@ -3,15 +3,22 @@ import { Link } from 'react-router-dom'
 import '../components/style.I.css'
 
 
-const HotListCards = ({ music }) => {
+const HotListCards = ({ hotlist }) => {
     return (
-        <div className='hotlistcardsdiv'>
-            <Link to={`/albumspage/${music.id}`}>
-                <img src={music.cover} alt={`${music.artist} - ${music.title}`} />
-                <span>{music.artist}</span>
-                <p>{music.stream}</p>
-            </Link>
-        </div>
+
+        <>
+            {
+                hotlist.slice(0, 6).map(album => (
+                    <div className='hotlistcardsdiv'>
+                        <Link to={`/hotlistpage/${album.id}`}>
+                            <img src={album.images[0].url} alt={album.name} />
+                            <span>{album.name}</span>
+                            <p>{album.stream}</p>
+                        </Link>
+                    </div>
+                ))}
+        </>
+
     )
 }
 

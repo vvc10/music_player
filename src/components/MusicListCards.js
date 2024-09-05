@@ -15,22 +15,22 @@ const MusicListCards = (music) => {
     <>
       <div className='musiclistcards_fl'>
 
-        <label>{music.srno}</label>
+        <label>{music.rank}</label>
         <span>
           <img src={music.cover} />
           <p>{music.title}</p>
         </span>
         <caption>{music.artist}</caption>
-        <div className='spacer'> </div>
+        <div className='spacer'> {music.plays}</div>
         <div className='duration'>{music.duration}</div>
         <div className='playbtn' onClick={handleClickPlay}>
           {
             selectedMusic && selectedMusic.id === music.id ?
-             
-             <MusicPlayingGif/>
-          
-            :
-            <i class="fa">&#xf144;</i>
+
+              <MusicPlayingGif />
+
+              :
+              <a href={music.song_url}><i class="fa">&#xf144;</i></a>
           }
 
         </div>
