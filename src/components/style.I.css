@@ -1781,7 +1781,7 @@ body {
 /* moodplay page styling */
 
 .moodplay_div{
-    padding: 1rem 2rem;
+    /* padding: 1rem 2rem; */
 }
 
 .moodplay_div h2{
@@ -1804,8 +1804,8 @@ body {
 
 .mood_card{
     cursor: pointer;
-    background-color: hsl(230, 46%, 20%, .2);
-    padding: .5rem 1rem;
+    background-color: hsl(230, 46%, 20%, .6);
+ 
 
     font-size: 15px;
     font-weight: 400;

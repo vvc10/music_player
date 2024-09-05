@@ -4,7 +4,7 @@ import podbanner from '../assets/pexels-jandubanek-1134829.jpg'
 
 const Podcasts = () => {
   return (
-    <div >
+    <div>
       <div className='text-center'>
         <img src={podbanner} className='h-[60vh] w-[100vw] rounded-[0px] object-cover opacity-40 absolute top-[0]' />
 
