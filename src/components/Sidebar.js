@@ -10,28 +10,26 @@ import { FaUserLarge } from "react-icons/fa6";
 const Sidebar = () => {
   return (
     <div className='fl_sidebar'>
-    <div className='flsidebar_logo'>
-      <ul style={{padding:'20px 20px', margin:'0px'}}>
-       <li style={{padding:'0px', margin:'0px', listStyle:'none'}}> <Link to='/' style={{ textDecoration:'none', color:'white'}}>MoodiPlay</Link> </li> 
-      </ul></div>
-    
+      <div className='flsidebar_logo'>
+        <ul style={{ padding: '20px 20px', margin: '0px' }}>
+          <li style={{ padding: '0px', margin: '0px', listStyle: 'none' }}> <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>MoodiPlay</Link> </li>
+        </ul>
+      </div>
+
       <ul>
         <li>
-          <Link to="/" className='flex flex-row gap-2 align-center'><MdHomeFilled/>Home</Link>
+          <Link to="/" className='flex flex-row gap-2 align-center'><MdHomeFilled />Home</Link>
         </li>
         <li>
-          <Link to="/discover" className='flex flex-row gap-2 align-center'><MdExplore/>Discover</Link>
+          <Link to="/discover" className='flex flex-row gap-2 align-center'><MdExplore />Discover</Link>
         </li>
-       
-
-
       </ul>
-     
-      <hr/>
-      {/* <label>Music list</label> */}
+
+      <hr />
+ 
       <ul>
         <li>
-          <Link to="/moodplay" className='flex flex-row gap-2 align-center'><FaSearch/>Mood</Link>
+          <Link to="/moodplay" className='flex flex-row gap-2 align-center'><FaSearch />Mood</Link>
         </li>
         {/* <li>
           <Link to="/playlists">Playlists</Link>
@@ -40,10 +38,10 @@ const Sidebar = () => {
           <Link to="/foryou">Favourites</Link>
         </li> */}
         <li>
-          <Link to="/podcasts" className='flex flex-row gap-2 align-center'><RiMic2Fill/>Podcasts</Link>
+          <Link to="/podcasts" className='flex flex-row gap-2 align-center'><RiMic2Fill />Podcasts</Link>
         </li>
         <li>
-          <Link to="/foryou" className='flex flex-row gap-2 align-center'> <FaUserLarge/> For you</Link>
+          <Link to="/foryou" className='flex flex-row gap-2 align-center'> <FaUserLarge /> For you</Link>
         </li>
       </ul>
 

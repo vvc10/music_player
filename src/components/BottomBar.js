@@ -19,8 +19,8 @@ const BottomBar = () => {
               <i class="fa fa-bars"></i>Playlists</Link>
           </li>
           <li>
-            <Link to="/foryou">
-              <i class="fa fa-user"></i>you</Link>
+            <Link to="/moodplay">
+              <i class="fa fa-user"></i>Moodplay</Link>
           </li>
 
 

@@ -140,7 +140,7 @@ body {
     /* padding: .5rem 0; */
 }
 
-.fl_sidebar>ul>a{
+.fl_sidebar>ul>a {
     font-weight: 600;
 
 }
@@ -162,13 +162,14 @@ body {
     padding: .5rem 0.5rem;
 
 }
+
 .fl_sidebar>ul>li:hover,
-.fl_sidebar>ul>li:active
-{
+.fl_sidebar>ul>li:active {
     list-style: none;
     background-color: hsl(230, 43%, 48%, .1);
     border-radius: 5px;
 }
+
 .fl_sidebar>label {
     font-size: 15px;
     padding: 0 1rem;
@@ -426,7 +427,7 @@ body {
     /* background-color: hsl(231, 18%, 63%); */
     width: fit-content;
     height: fit-content;
- padding: 1rem;
+    padding: 1rem;
     border-radius: 5px;
 }
 
@@ -449,10 +450,12 @@ body {
     border-radius: 5px;
 
 }
-.apdbl-actions{
+
+.apdbl-actions {
     display: flex;
     flex-direction: row;
 }
+
 .albumscardsdiv>a:hover {
     background-color: hsl(231, 18%, 63%, .1);
 
@@ -717,7 +720,8 @@ body {
     margin: 1rem;
 
 }
-.fxd_musicplayer_icon{
+
+.fxd_musicplayer_icon {
     cursor: pointer;
     position: absolute;
     top: 1rem;
@@ -726,6 +730,7 @@ body {
     color: #777;
     font-weight: 400;
 }
+
 .fxd_musicplayer>.mp-img {
     /* background-color: antiquewhite; */
     width: 100%;
@@ -1185,12 +1190,14 @@ body {
     width: 15%;
     text-align: right;
 }
-.apdbl-artist>p{
+
+.apdbl-artist>p {
     width: max-content;
     font-size: 12px;
     margin: 0.1rem;
     font-weight: 400;
 }
+
 .apdbl-dwnld-btn>a {
     color: white;
     text-decoration: none;
@@ -1390,7 +1397,7 @@ body {
     }
 
     .bottombar_div {
-         display: block !important;
+        display: block !important;
 
     }
 
@@ -1766,13 +1773,15 @@ body {
 
 /* Explore page styling */
 
-.explore_div{
+.explore_div {
     padding: 1rem 1rem;
 }
-.explore_div h1{
+
+.explore_div h1 {
     font-size: 16px;
 }
-.explore_div p{
+
+.explore_div p {
     font-size: 12px;
     font-weight: 500;
     opacity: .5;
@@ -1780,19 +1789,19 @@ body {
 
 /* moodplay page styling */
 
-.moodplay_div{
+.moodplay_div {
     /* padding: 1rem 2rem; */
 }
 
-.moodplay_div h2{
+.moodplay_div h2 {}
 
-}
-.moodplay_div p{
+.moodplay_div p {
     opacity: .5;
     font-weight: 300;
     color: #dbe1ff;
 }
-.moodCard_fl{
+
+.moodCard_fl {
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -1802,30 +1811,67 @@ body {
     /* background-color: red; */
 }
 
-.mood_card{
+.music_card {
+    z-index: 1000;
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+
+    /* Faded border effect using box-shadow */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1),
+        /* Outer fade */
+        0 0 20px rgba(0, 0, 0, 0.1),
+        /* Slightly inner fade */
+        0 0 30px rgba(255, 255, 255, 0.1);
+    /* Inner-most fade */
+}
+
+
+.music_card_inmob {
+    z-index: 1000;
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+
+    /* Faded border effect using box-shadow */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1),
+        /* Outer fade */
+        0 0 20px rgba(0, 0, 0, 0.1),
+        /* Slightly inner fade */
+        0 0 30px rgba(255, 255, 255, 0.1);
+    /* Inner-most fade */
+}
+.mood_card {
     cursor: pointer;
     background-color: hsl(230, 46%, 20%, .6);
- 
+
 
     font-size: 14px;
     font-weight: 400;
     color: #dbe1ff;
- 
+
     border: 1px solid #1b2349;
     border-radius: 20px;
 }
-.mood_card:hover{
+
+.mood_card:hover {
     transition: .1s;
     transform: scale(1.1);
 }
-.input_moodai{
- width: fit-content;
- background-color: hsl(230, 46%, 20%, .2);
- border: 1px solid #1b2349;
- border-radius: 20px;
- width: 400px;
+
+.input_moodai {
+    width: fit-content;
+    background-color: hsl(230, 46%, 20%, .2);
+    border: 1px solid #1b2349;
+    border-radius: 20px;
+    width: 400px;
 }
-.input_moodai input{
+
+.input_moodai input {
     background-color: transparent;
     height: 100%;
     width: 100%;
@@ -1833,14 +1879,15 @@ body {
     padding: 0rem 1rem;
     border-radius: 20px;
     color: #dbe1ff;
-    
+
 }
-.input_moodai input::placeholder{
+
+.input_moodai input::placeholder {
     color: #dbe1ff;
     opacity: .6;
 }
 
-.scroll-bar-trend::-webkit-scrollbar{
-background-color: red;
-display:none;
+.scroll-bar-trend::-webkit-scrollbar {
+    background-color: red;
+    display: none;
 }

@@ -67,7 +67,7 @@ const MoodPlay = () => {
 
       <div className='moodimusic_div flex flex-row z-90'>
         {musicTracks.length > 0 ? (
-          <div className='music_card grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2 py-2 my-10 mx-auto'>
+          <div className='music_card_inmob md:music_card grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2 py-2 my-10 mx-auto'>
             {musicTracks.map((track) => (
               <div key={track.id} className='track border-[0] p-2 rounded-md bg-white-900 shadow-md'>
                 <img src={track.album.cover} alt={track.title} className='w-full h-auto object-cover rounded-md' />
@@ -78,7 +78,7 @@ const MoodPlay = () => {
           </div>
 
         ) : (
-          <p className='text-center m-auto'>Select a mood or describe it to play music...</p>
+          <p className='text-center mx-auto mt-[100px] w-[90%]'>Select a mood or describe it to play music...</p>
         )}
       </div>
     </div>
