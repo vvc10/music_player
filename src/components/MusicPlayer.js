@@ -8,11 +8,11 @@ const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [playerVisible, setPlayerVisible] = useState(false); // Start with player hidden
+  const [playerHidden, setPlayerHidden] = useState(false); // Toggle player content, not the button
 
   useEffect(() => {
     if (selectedMusic) {
-      setPlayerVisible(true); // Show player when new music is selected
+      setPlayerHidden(false); // Show player content when new music is selected
       if (audioRef) {
         audioRef.src = selectedMusic.song_url;
         audioRef.load();
@@ -64,7 +64,7 @@ const MusicPlayer = () => {
   };
 
   const togglePlayerVisibility = () => {
-    setPlayerVisible((prevVisible) => !prevVisible);
+    setPlayerHidden((prevHidden) => !prevHidden); // Toggle player content visibility
   };
 
   const mpcardbgset = {
@@ -74,46 +74,64 @@ const MusicPlayer = () => {
     backgroundColor: selectedMusic ? 'rgba(0, 0, 0, 0.5)' : 'none',
   };
 
-  if (!playerVisible || !selectedMusic) {
-    return null; // If player is not visible or no music selected, render nothing
+  if (!selectedMusic) {
+    return null; // If no music is selected, render nothing
   }
 
   return (
-    <div className='fxd_musicplayer'>
-      <div className='fxd_musicplayer_icon' onClick={togglePlayerVisibility}>+</div>
-      <div className='fscmp_bg' style={mpcardbgset}></div>
-      <div className='mp-img'>
-        <img src={selectedMusic.cover} alt='Music Cover' />
-        <div className='mp-songdetails'>
-          <div className='mp-songd-ar'>
-            <span>{selectedMusic.title}</span>
-            <p>{selectedMusic.artist}</p>
+    <div className={`fxd_musicplayer ${playerHidden ? "h-[10%] p-2" : "h-[40%] bg-red-200"}`}>
+      <div className='fxd_musicplayer_icon' onClick={togglePlayerVisibility}>
+        {playerHidden ? '+' : '-'}
+      </div>
+      {/* // Only show the player content if not hidden */}
+      <>
+        <div className='fscmp_bg' style={mpcardbgset}></div>
+        <div className={`mp-img ${playerHidden ? "hidden" : "block"}`}>
+          <img src={selectedMusic.cover} alt='Music Cover' />
+          <div className='mp-songdetails'>
+            <div className='mp-songd-ar'>
+              <span>{selectedMusic.title}</span>
+              <p>{selectedMusic.artist}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div className='mp-ranger-div'>
-        <input
-          type='range'
-          value={currentTime}
-          max={duration}
-          onChange={handleSeekBarChange}
-        />
-        <div className='mp-time-display'>
-          <div className='mp-time-display-l'>{formatTime(currentTime)}</div>
-          <div className='mp-time-display-r'>{formatTime(duration - currentTime)}</div>
+        <div className={`p-2 gap-[20px] ${playerHidden ? "block flex flex-row items-center" : "hidden"}`}>
+          <img className='h-[50px] w-[50px]' src={selectedMusic.cover} alt='Music Cover' />
+          <div className=''>
+            <div className='mp-songd-ar'>
+              <span>{selectedMusic.title}</span>
+              <p>{selectedMusic.artist} | playing..</p>
+
+            </div>
+          </div>
         </div>
-      </div>
-      <div className='mp-controls'>
-        <div className='mpc mp-shuffle'></div>
-        <div className='mpc mp-prev' onClick={handlePrev}><i className="fa">&#xf04a;</i></div>
-        <div className='mpc mp-play-pause' onClick={handlePlayPause}>
-          {isPlaying ? <i className="fa fa-pause"></i> : <i className="fa fa-play"></i>}
+        <div className={`mp-ranger-div ${playerHidden ?"invisible": "visible"}`}>
+          <input
+            type='range'
+            value={currentTime}
+            max={duration}
+            onChange={handleSeekBarChange}
+          />
+          <div className='mp-time-display'>
+            <div className='mp-time-display-l'>{formatTime(currentTime)}</div>
+            <div className='mp-time-display-r'>{formatTime(duration - currentTime)}</div>
+          </div>
         </div>
-        <div className='mpc mp-next' onClick={handleNext}>
-          <i className="fa fa-forward"></i>
+        <div className={`mp-controls ${playerHidden ?"invisible": "visible"}`}>
+          <div className='mpc mp-shuffle'></div>
+          <div className='mpc mp-prev' onClick={handlePrev}><i className="fa">&#xf04a;</i></div>
+          <div className='mpc mp-play-pause' onClick={handlePlayPause}>
+            {isPlaying ? <i className="fa fa-pause"></i> : <i className="fa fa-play"></i>}
+          </div>
+          <div className='mpc mp-next' onClick={handleNext}>
+            <i className="fa fa-forward"></i>
+          </div>
+          <div className='mpc mp-queue'><i className="material-icons">queue_music</i></div>
         </div>
-        <div className='mpc mp-queue'><i className="material-icons">queue_music</i></div>
-      </div>
+      </>
+
+
+
       <audio
         ref={(audio) => setAudioRef(audio)}
         onTimeUpdate={handleTimeUpdate}

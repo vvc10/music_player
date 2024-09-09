@@ -14,6 +14,7 @@ const App = () => {
        {/*  <WeeklyAlbumsComponent/> */}
         {/* <FetchMusicData/> */}
             <HomeScreen />
+            
         </>
     );
 };

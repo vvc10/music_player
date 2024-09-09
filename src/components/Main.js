@@ -14,6 +14,7 @@ import BottomBar from './BottomBar';
 import MoodPlay from './MoodPlay';
 import PlayslistsPage from './PlayslistsPage';
 import Podcasts from './Podcasts';
+import LoginPage from './LoginPage';
 const Main = () => {
 
 
@@ -27,6 +28,9 @@ const Main = () => {
         <MusicProvider>
           <MainTopBar />
           <Routes>
+
+            <Route path="/login" element={<LoginPage />} />
+
             <Route path="/" element={<Home />} />
             <Route path="/discover" element={<Discover />} />
             <Route path="/foryou" element={<ForYour />} />
@@ -34,12 +38,14 @@ const Main = () => {
             <Route path="/moodplay" element={<MoodPlay />} />
             <Route path="/playlists" element={<PlayslistsPage />} />
             <Route path="/albumpage/:id" element={<AlbumPage />} />
+
             {/* <Route path="/hotlistpage/:id" element={<HotListPage/>}/> */}
           </Routes>
-          <BottomBar/>
+          <BottomBar />
           <div className='mp-zone-fxd'>
             <MusicPlayer />
           </div>
+
         </MusicProvider>
 
 

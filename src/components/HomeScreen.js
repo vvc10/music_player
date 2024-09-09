@@ -4,6 +4,9 @@ import Main from './Main'
 import '../components/style.I.css'
 import MusicPlayer from './MusicPlayer'
 import { MusicProvider } from './MusicContext'
+import { Router, Routes, Route } from 'react-router-dom'
+import LoginPage from './LoginPage'
+
 const HomeScreen = () => {
     return (
         <>
@@ -11,10 +14,14 @@ const HomeScreen = () => {
                 <div className='homefl'>
                     <Sidebar />
                     <Main />
-                   
+
+
+
+
                 </div>
+                 
             </MusicProvider>
- 
+
         </>
 
     )

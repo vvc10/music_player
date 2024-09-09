@@ -7,7 +7,12 @@ import { MdExplore } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { RiMic2Fill } from "react-icons/ri";
 import { FaUserLarge } from "react-icons/fa6";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signInWithGoogle, logOut, auth } from '../auth/firebaseConfig.js';
+
 const Sidebar = () => {
+
+  const [user] = useAuthState(auth);
   return (
     <div className='fl_sidebar'>
       <div className='flsidebar_logo'>
@@ -26,25 +31,34 @@ const Sidebar = () => {
       </ul>
 
       <hr />
- 
-      <ul>
-        <li>
-          <Link to="/moodplay" className='flex flex-row gap-2 align-center'><FaSearch />Mood</Link>
-        </li>
-        {/* <li>
+      {
+        user ? (
+          <ul>
+            <li>
+              <Link to="/moodplay" className='flex flex-row gap-2 align-center'><FaSearch />Mood</Link>
+            </li>
+            {/* <li>
           <Link to="/playlists">Playlists</Link>
         </li> */}
-        {/* <li>
+            {/* <li>
           <Link to="/foryou">Favourites</Link>
         </li> */}
-        <li>
-          <Link to="/podcasts" className='flex flex-row gap-2 align-center'><RiMic2Fill />Podcasts</Link>
-        </li>
-        <li>
-          <Link to="/foryou" className='flex flex-row gap-2 align-center'> <FaUserLarge /> For you</Link>
-        </li>
-      </ul>
+            <li>
+              <Link to="/podcasts" className='flex flex-row gap-2 align-center'><RiMic2Fill />Podcasts</Link>
+            </li>
 
+            <li>
+              <Link to="/foryou" className='flex flex-row gap-2 align-center'> <FaUserLarge /> For you</Link>
+            </li>
+
+
+          </ul>
+        ) : (
+          <>
+
+          </>
+        )
+      }
     </div>
   )
 }
