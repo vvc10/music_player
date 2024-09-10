@@ -79,8 +79,8 @@ const MusicPlayer = () => {
   }
 
   return (
-    <div className={`fxd_musicplayer ${playerHidden ? "h-[10%] p-2" : "h-[40%] bg-red-200"}`}>
-      <div className='fxd_musicplayer_icon' onClick={togglePlayerVisibility}>
+    <div className={`fxd_musicplayer item-center ${playerHidden ? "h-[80px] w-[220px] p-2" : "h-[40%]"}`}>
+      <div className='fxd_musicplayer_icon item-center md:block hidden' onClick={togglePlayerVisibility}>
         {playerHidden ? '+' : '-'}
       </div>
       {/* // Only show the player content if not hidden */}
@@ -96,16 +96,16 @@ const MusicPlayer = () => {
           </div>
         </div>
         <div className={`p-2 gap-[20px] ${playerHidden ? "block flex flex-row items-center" : "hidden"}`}>
-          <img className='h-[50px] w-[50px]' src={selectedMusic.cover} alt='Music Cover' />
+          <img className='h-[50px] w-[50px] rounded-[10px]' src={selectedMusic.cover} alt='Music Cover' />
           <div className=''>
             <div className='mp-songd-ar'>
-              <span>{selectedMusic.title}</span>
-              <p>{selectedMusic.artist} | playing..</p>
+              <span className='text-[15px]'>{selectedMusic.title}</span>
+              <p className='text-[13px] opacity-60'>{selectedMusic.artist} | playing..</p>
 
             </div>
           </div>
         </div>
-        <div className={`mp-ranger-div ${playerHidden ?"invisible": "visible"}`}>
+        <div className={`mp-ranger-div ${playerHidden ? "invisible" : "visible"}`}>
           <input
             type='range'
             value={currentTime}
@@ -117,7 +117,7 @@ const MusicPlayer = () => {
             <div className='mp-time-display-r'>{formatTime(duration - currentTime)}</div>
           </div>
         </div>
-        <div className={`mp-controls ${playerHidden ?"invisible": "visible"}`}>
+        <div className={`mp-controls ${playerHidden ? "invisible" : "visible"}`}>
           <div className='mpc mp-shuffle'></div>
           <div className='mpc mp-prev' onClick={handlePrev}><i className="fa">&#xf04a;</i></div>
           <div className='mpc mp-play-pause' onClick={handlePlayPause}>

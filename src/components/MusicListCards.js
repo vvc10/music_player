@@ -30,7 +30,8 @@ const MusicListCards = (music) => {
               <MusicPlayingGif />
 
               :
-              <i class="fa">&#xf144;</i> 
+              <i class="fa">&#xf144;</i>
+          
           }
 
         </div>

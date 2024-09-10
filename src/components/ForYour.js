@@ -67,14 +67,12 @@ const ForYour = () => {
                     <p>No favorite songs yet.</p>
                 ) : (
                     favorites.map((song) => (
-                        <div key={song.id} className="favorite-card p-4 bg-[#111631] rounded-lg shadow-lg cursor-pointer">
-                            {song.poster && (
-                                <img src={song.poster} alt={song.name} className="mb-2 rounded-lg w-full h-[150px] object-cover" />
+                        <div key={song.albumId} className="favorite-card p-2 bg-[#111631] rounded-lg shadow-lg cursor-pointer flex flex-row items-center gap-[10px]">
+                            {song.albumImage && (
+                                <img src={song.albumImage} alt={song.albumName} className="mb-2 rounded-lg w-[50px] h-[50px] object-cover" />
                             )}
-                            <h3 className="text-[14px] font-[500]">{song.name}</h3>
-                            <p className="text-sm text-gray-400">{song.artist}</p>
-                            <p className="text-sm text-gray-400">{song.album}</p>
-                            <p className="text-sm text-gray-400">{song.releaseDate}</p>
+                            <h3 className="text-[14px] font-[500]">{song.albumName}</h3>
+
                         </div>
                     ))
                 )}
